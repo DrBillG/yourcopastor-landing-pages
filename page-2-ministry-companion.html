@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Co-Pastor — The Ministry Companion</title>
+  <!-- DESIGN NOTES — Page 2: The Ministry Companion
+    Style: Warm Editorial + Bento Grid
+    Palette: #f7f3ee bg, #1b2340 navy, #b8965a gold
+    Headline: "Finally, a Co-Pastor Who Never Burns Out"
+    CTA: "Get Your Co-Pastor Free"
+    Version: 1.0
+    User Feedback: (none yet)
+  -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f7f3ee; --bg-alt: #ede8e0;
+      --navy: #1b2340; --navy-light: #2a3660;
+      --gold: #b8965a; --gold-dark: #8a6e3e; --gold-light: #d4ad70;
+      --text: #3a3530; --text-muted: #7a6e62; --text-light: #a89e92;
+      --border: #ddd7ce;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: Georgia,'Times New Roman',serif; line-height: 1.6; }
+    .sans { font-family: -apple-system,'Segoe UI',sans-serif; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(247,243,238,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; font-family: Georgia,serif; font-size: 1.05rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: -0.01em; }
+    .nav-logo-icon { width: 32px; height: 32px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--navy); }
+    .btn-navy { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.6rem 1.4rem; background: var(--navy); color: #fff; font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.82rem; font-weight: 600; border-radius: 8px; text-decoration: none; transition: background 0.2s; }
+    .btn-navy:hover { background: var(--navy-light); }
+    .hero { padding: 6rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .church-logos { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; }
+    .church-logo-label { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); }
+    .church-logo-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .church-chip { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.6rem; font-weight: 600; color: var(--navy); padding: 0.25rem 0.6rem; border: 1px solid var(--border); border-radius: 4px; background: #fff; }
+    .hero h1 { font-size: clamp(2rem,4vw,3.2rem); font-weight: 700; color: var(--navy); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem; }
+    .hero-cta-stack { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+    .btn-gold-large { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.25rem; background: var(--gold); color: #fff; font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.95rem; font-weight: 700; border-radius: 10px; text-decoration: none; transition: background 0.2s,transform 0.2s; box-shadow: 0 4px 20px rgba(184,150,90,0.25); }
+    .btn-gold-large:hover { background: var(--gold-dark); transform: translateY(-2px); }
+    .cta-footnote { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.75rem; color: var(--text-light); }
+    .hero-right { position: relative; }
+    .card-stack { position: relative; height: 380px; }
+    .stack-card { position: absolute; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; box-shadow: 0 4px 24px rgba(27,35,64,0.06); }
+    .stack-card-1 { top: 0; left: 0; right: 60px; transform: rotate(-2deg); }
+    .stack-card-2 { top: 30px; left: 30px; right: 0; transform: rotate(1.5deg); z-index: 2; }
+    .stack-card-main { top: 60px; left: 15px; right: 15px; transform: rotate(0); z-index: 3; box-shadow: 0 12px 40px rgba(27,35,64,0.1); }
+    .stack-tag { display: inline-block; font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); background: rgba(184,150,90,0.1); padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.75rem; }
+    .stack-title { font-size: 0.85rem; font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; }
+    .stack-preview { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.72rem; color: var(--text-muted); line-height: 1.6; }
+    .stack-divider { height: 1px; background: var(--border); margin: 0.75rem 0; }
+    .stack-footer { display: flex; justify-content: space-between; align-items: center; }
+    .stack-label { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.62rem; color: var(--text-light); }
+    .stack-status { display: flex; align-items: center; gap: 0.3rem; font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.6rem; color: #3a9d5e; font-weight: 600; }
+    .stack-dot { width: 6px; height: 6px; background: #3a9d5e; border-radius: 50%; }
+    .pain-narrative { padding: 6rem 0; background: var(--navy); color: #e8e4dc; }
+    .pain-inner { max-width: 740px; margin: 0 auto; text-align: center; }
+    .pain-label { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; }
+    .pain-quote { font-size: clamp(1.5rem,3.5vw,2.2rem); font-weight: 400; line-height: 1.4; color: #e8e4dc; margin-bottom: 2rem; font-style: italic; }
+    .pain-quote strong { font-style: normal; color: #fff; font-weight: 700; }
+    .pain-sub { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.95rem; color: rgba(197,193,185,0.8); line-height: 1.8; max-width: 540px; margin: 0 auto; }
+    .solution-section { padding: 6rem 0; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-label { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .section-title { font-size: clamp(1.7rem,3.5vw,2.5rem); font-weight: 700; color: var(--navy); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+    .section-sub { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.95rem; color: var(--text-muted); max-width: 500px; margin: 0 auto; }
+    .bento-grid { display: grid; grid-template-columns: repeat(3,1fr); grid-template-rows: auto auto; gap: 1.25rem; }
+    .bento-cell { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 2rem; overflow: hidden; position: relative; transition: transform 0.2s,box-shadow 0.2s; }
+    .bento-cell:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(27,35,64,0.08); }
+    .bento-cell-wide { grid-column: span 2; }
+    .bento-cell-tall { grid-row: span 2; }
+    .bento-icon { font-size: 1.75rem; margin-bottom: 1rem; }
+    .bento-title { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+    .bento-desc { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+    .bento-outcome { margin-top: 0.85rem; font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--gold); }
+    .bento-cell-featured { background: var(--navy); border-color: var(--navy); color: #e8e4dc; }
+    .bento-cell-featured .bento-title { color: #fff; }
+    .bento-cell-featured .bento-desc { color: rgba(197,193,185,0.75); }
+    .bento-cell-featured .bento-outcome { color: var(--gold-light); }
+    .bento-mini-screen { margin-top: 1.25rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem; }
+    .bento-mini-line { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.12); margin-bottom: 0.5rem; }
+    .bento-mini-line.short { width: 60%; }
+    .bento-mini-line.gold { background: rgba(184,150,90,0.4); width: 80%; }
+    .bento-cell-gold { background: linear-gradient(135deg,var(--gold),var(--gold-dark)); border-color: var(--gold); color: #fff; }
+    .bento-cell-gold .bento-title { color: #fff; }
+    .bento-cell-gold .bento-desc { color: rgba(255,255,255,0.75); }
+    .testimonials-section { padding: 6rem 0; background: var(--bg-alt); }
+    .testimonials-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 3rem; }
+    .testimonial-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 2rem; }
+    .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 0.05em; }
+    .t-quote { font-size: 0.9rem; color: var(--text); line-height: 1.7; margin-bottom: 1.5rem; }
+    .t-author { display: flex; align-items: center; gap: 0.75rem; }
+    .t-avatar { width: 42px; height: 42px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--gold); flex-shrink: 0; }
+    .t-name { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--navy); }
+    .t-church { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.72rem; color: var(--text-light); }
+    .t-result { margin-top: 1rem; padding: 0.6rem 0.85rem; background: rgba(184,150,90,0.08); border-radius: 8px; font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.72rem; font-weight: 600; color: var(--gold-dark); }
+    .mid-cta { padding: 5rem 0; text-align: center; background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .mid-cta h2 { font-size: clamp(1.5rem,3vw,2.2rem); font-weight: 700; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    .mid-cta p { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem; }
+    .faq-section { padding: 5rem 0; }
+    .faq-list { max-width: 720px; margin: 3rem auto 0; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-question { width: 100%; background: none; border: none; padding: 1.25rem 0; font-size: 0.95rem; font-family: Georgia,serif; font-weight: 700; color: var(--navy); text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .faq-question:hover { color: var(--gold-dark); }
+    .faq-chevron { font-size: 0.7rem; color: var(--gold); transition: transform 0.2s; flex-shrink: 0; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer { display: none; padding-bottom: 1.25rem; font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.87rem; color: var(--text-muted); line-height: 1.75; }
+    .faq-item.open .faq-answer { display: block; }
+    .final-cta { padding: 7rem 0; background: var(--navy); text-align: center; position: relative; overflow: hidden; }
+    .final-cta::before { content: '✦'; position: absolute; top: -1rem; left: 50%; transform: translateX(-50%); font-size: 8rem; color: rgba(184,150,90,0.04); pointer-events: none; }
+    .final-cta-inner { position: relative; z-index: 1; }
+    .final-cta h2 { font-size: clamp(1.8rem,4vw,3rem); font-weight: 700; color: #fff; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem; }
+    .final-cta h2 em { font-style: italic; color: var(--gold-light); }
+    .final-cta p { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.95rem; color: rgba(197,193,185,0.8); margin-bottom: 2.5rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .cta-sub-note { margin-top: 1.25rem; font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.75rem; color: rgba(197,193,185,0.5); }
+    footer { background: #111825; padding: 2.5rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-size: 0.95rem; font-weight: 700; color: var(--gold-light); }
+    .footer-copy { font-family: -apple-system,'Segoe UI',sans-serif; font-size: 0.73rem; color: rgba(197,193,185,0.4); }
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .bento-grid { grid-template-columns: 1fr 1fr; }
+      .bento-cell-wide { grid-column: span 2; }
+      .bento-cell-tall { grid-row: span 1; }
+      .testimonials-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 640px) {
+      .bento-grid { grid-template-columns: 1fr; }
+      .bento-cell-wide { grid-column: span 1; }
+      .container { padding: 0 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo"><div class="nav-logo-icon">✦</div>Your Co-Pastor</a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="#get-started" class="btn-navy">Get Your Co-Pastor Free</a>
+    </div>
+  </nav>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="church-logos">
+            <span class="church-logo-label">Trusted by</span>
+            <div class="church-logo-chips">
+              <span class="church-chip">Cornerstone Church</span>
+              <span class="church-chip">Grace Point</span>
+              <span class="church-chip">New Life Fellowship</span>
+              <span class="church-chip">+ 497 more</span>
+            </div>
+          </div>
+          <h1>Finally, a Co-Pastor Who <em>Never Burns Out</em></h1>
+          <p class="hero-sub sans">For pastors leading alone — Your Co-Pastor handles sermons, member care, and admin so you can lead from strength, not exhaustion.</p>
+          <div class="hero-cta-stack">
+            <a href="#get-started" class="btn-gold-large">Get Your Co-Pastor Free <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <span class="cta-footnote">No credit card · Free to start · Cancel anytime</span>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="card-stack">
+            <div class="stack-card stack-card-1"><div class="stack-tag">Admin</div><div class="stack-title">Weekly Bulletin Draft</div><div class="stack-preview sans">Your bulletin for this Sunday is ready. 3 announcements, service order, and giving info included...</div></div>
+            <div class="stack-card stack-card-2"><div class="stack-tag">Member Care</div><div class="stack-title">Follow-up: Johnson Family</div><div class="stack-preview sans">Gentle check-in drafted for the Johnson family following last week's prayer request about illness...</div></div>
+            <div class="stack-card stack-card-main"><div class="stack-tag">Sermon</div><div class="stack-title">Sunday Message — John 15:5</div><div class="stack-preview sans">"Abide in Me" — 3-point outline with illustrations, discussion questions, and application points ready to review.</div><div class="stack-divider"></div><div class="stack-footer"><span class="stack-label sans">Ready for Sunday</span><span class="stack-status sans"><span class="stack-dot"></span> AI Draft Complete</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="pain-narrative">
+    <div class="container">
+      <div class="pain-inner">
+        <div class="pain-label">The Reality</div>
+        <blockquote class="pain-quote">You didn't enter ministry to drown in admin.<br><strong>You entered to shepherd people.</strong></blockquote>
+        <p class="pain-sub sans">The average pastor spends 23 hours per week on work that isn't preaching or direct pastoral care. That's not a productivity problem — it's a structural one. Ministry was never meant to be carried by one person. Your Co-Pastor is the faithful AI team member who handles everything else, so you can do what only you can do.</p>
+      </div>
+    </div>
+  </section>
+  <section class="solution-section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">What Your Co-Pastor Does</div>
+        <h2 class="section-title">Every part of ministry, supported</h2>
+        <p class="section-sub sans">From first draft to final follow-up — Your Co-Pastor handles the work that fills your week, so you can fill your congregation with life.</p>
+      </div>
+      <div class="bento-grid">
+        <div class="bento-cell bento-cell-wide bento-cell-featured">
+          <div class="bento-icon">✍️</div>
+          <div class="bento-title">AI Sermon Writing</div>
+          <div class="bento-desc sans">Generate complete sermon drafts — outlines, illustrations, application questions — in minutes. Grounded in scripture. Written in your voice.</div>
+          <div class="bento-outcome">Pastors save an average of 8 hours on sermon prep each week</div>
+          <div class="bento-mini-screen"><div class="bento-mini-line gold"></div><div class="bento-mini-line"></div><div class="bento-mini-line short"></div><div class="bento-mini-line"></div></div>
+        </div>
+        <div class="bento-cell bento-cell-tall">
+          <div class="bento-icon">🤝</div>
+          <div class="bento-title">Member Care Automation</div>
+          <div class="bento-desc sans">Follow-up messages, prayer tracking, care notes, hospital visit reminders — all drafted and organized. No one falls through the cracks.</div>
+          <div class="bento-outcome">3× more consistent pastoral follow-through</div>
+          <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="background:var(--bg-alt);border-radius:8px;padding:0.7rem 0.9rem;font-family:-apple-system,sans-serif;font-size:0.7rem;color:var(--text-muted);">📬 Follow-up sent to Johnson family</div>
+            <div style="background:var(--bg-alt);border-radius:8px;padding:0.7rem 0.9rem;font-family:-apple-system,sans-serif;font-size:0.7rem;color:var(--text-muted);">🙏 Prayer request logged: Williams family</div>
+            <div style="background:rgba(184,150,90,0.08);border-radius:8px;padding:0.7rem 0.9rem;font-family:-apple-system,sans-serif;font-size:0.7rem;color:var(--gold-dark);">✅ 8 follow-ups completed this week</div>
+          </div>
+        </div>
+        <div class="bento-cell">
+          <div class="bento-icon">📋</div>
+          <div class="bento-title">Admin on Autopilot</div>
+          <div class="bento-desc sans">Bulletins, announcements, volunteer coordination — ready in minutes.</div>
+          <div class="bento-outcome">5 hrs of admin work eliminated weekly</div>
+        </div>
+        <div class="bento-cell bento-cell-gold">
+          <div class="bento-icon">📖</div>
+          <div class="bento-title">Bible Study Plans</div>
+          <div class="bento-desc">Custom small group curricula and discipleship pathways tailored to your congregation.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="mid-cta">
+    <div class="container">
+      <h2>Ready to stop doing it alone?</h2>
+      <p class="sans">Your first free sermon is waiting. No setup required.</p>
+      <a href="#get-started" class="btn-gold-large">Get Your Co-Pastor Free</a>
+    </div>
+  </section>
+  <section class="testimonials-section" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Pastors Are Saying</div>
+        <h2 class="section-title">The difference is real</h2>
+      </div>
+      <div class="testimonials-row">
+        <div class="testimonial-card"><div class="stars">★★★★★</div><div class="t-quote">"Your Co-Pastor gave me my Saturdays back. I used to finish sermons at midnight. Now I'm done by Thursday and I actually rest before I preach."</div><div class="t-author"><div class="t-avatar">MR</div><div><div class="t-name">Pastor Marcus Reid</div><div class="t-church">Cornerstone Community Church, Atlanta</div></div></div><div class="t-result">Sermon prep: 12 hrs/week → 3 hrs/week</div></div>
+        <div class="testimonial-card"><div class="stars">★★★★★</div><div class="t-quote">"I was about to step down from ministry. Three years of burnout nearly took everything. Your Co-Pastor helped me find joy in the calling again."</div><div class="t-author"><div class="t-avatar">SL</div><div><div class="t-name">Pastor Sarah Lawson</div><div class="t-church">Grace Point Church, Nashville</div></div></div><div class="t-result">Still in ministry, 18 months later. Thriving.</div></div>
+        <div class="testimonial-card"><div class="stars">★★★★★</div><div class="t-quote">"Our member care is three times more consistent since we started using Your Co-Pastor. People actually feel seen now — because we can reach them."</div><div class="t-author"><div class="t-avatar">DW</div><div><div class="t-name">Pastor David Warren</div><div class="t-church">New Life Fellowship, Denver</div></div></div><div class="t-result">Member retention up 40% in 6 months</div></div>
+      </div>
+    </div>
+  </section>
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Common Questions</div>
+        <h2 class="section-title">Everything you want to know</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Is the content theologically sound?<span class="faq-chevron">▼</span></button><div class="faq-answer">Yes — Your Co-Pastor is trained on orthodox Christian theology and configurable to your denominational distinctives. Every output is a draft for your review. You're always the pastor; the AI is the assistant.</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Will my congregation know AI assisted my sermon?<span class="faq-chevron">▼</span></button><div class="faq-answer">That's your call. Many pastors use AI the same way they use commentaries and sermon services — as research and preparation tools. Your voice, your stories, and your pastoral heart are what make the message yours.</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">How quickly can I get started?<span class="faq-chevron">▼</span></button><div class="faq-answer">Most pastors create their first sermon draft within 15 minutes. No complex setup — just tell Your Co-Pastor about your church and this week's passage.</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Does it work for small churches?<span class="faq-chevron">▼</span></button><div class="faq-answer">Your Co-Pastor was built for the solo pastor as much as the large staff church. Whether your congregation is 30 or 3,000, the tools scale to you.</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Is there a free trial?<span class="faq-chevron">▼</span></button><div class="faq-answer">Yes. Start free — no credit card needed. Plans are month-to-month. Cancel anytime, no questions asked.</div></div>
+      </div>
+    </div>
+  </section>
+  <section class="final-cta" id="get-started">
+    <div class="container">
+      <div class="final-cta-inner">
+        <h2>Ministry is hard enough.<br>It shouldn't be <em>lonely</em> too.</h2>
+        <p class="sans">Join 500+ pastors who chose to lead with support. Your first sermon draft is waiting — free, today.</p>
+        <a href="#" class="btn-gold-large" style="font-size:1rem;padding:1.1rem 2.5rem;">Claim Your Free Ministry Audit <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <div class="cta-sub-note">Free to start · Month-to-month · Cancel anytime · No credit card needed</div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">✦ Your Co-Pastor</div>
+        <div class="footer-copy sans">© 2026 Your Co-Pastor · AI-Powered Ministry Support</div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+</body>
+</html>
