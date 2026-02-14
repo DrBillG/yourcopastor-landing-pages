@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Co-Pastor — Landing Page Options</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0f0e0d;--bg-card:#1a1814;--bg-card-hover:#201d19;--text:#c5c1b9;--text-muted:#7a766e;--gold:#b8965a;--gold-light:#d4ad70;--border:#2a2621;--border-hover:#b8965a}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI",Georgia,serif;min-height:100vh}
+    header{display:flex;align-items:center;justify-content:space-between;padding:2rem 3rem;border-bottom:1px solid var(--border)}
+    .logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+    .logo-icon{width:40px;height:40px;background:linear-gradient(135deg,#b8965a,#8a6e3e);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+    .logo-text{display:flex;flex-direction:column;line-height:1.1}
+    .logo-text span:first-child{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:600}
+    .logo-text span:last-child{font-size:1.1rem;color:var(--text);font-weight:500}
+    .header-badge{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);padding:.35rem .85rem;border:1px solid var(--border);border-radius:999px}
+    .hero{text-align:center;padding:4rem 2rem 3rem}
+    .hero-tag{display:inline-block;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
+    .hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:300;letter-spacing:-.02em;color:#e8e4dc;line-height:1.2;margin-bottom:1rem}
+    .hero h1 strong{font-weight:600;color:#fff}
+    .hero p{font-size:1rem;color:var(--text-muted);max-width:480px;margin:0 auto;line-height:1.6}
+    .grid-section{padding:2rem 3rem 5rem;max-width:1200px;margin:0 auto}
+    .grid-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
+    .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+    .card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;overflow:hidden;cursor:pointer;text-decoration:none;display:block;transition:border-color .25s,background .25s,transform .2s,box-shadow .25s}
+    .card:hover{border-color:var(--border-hover);background:var(--bg-card-hover);transform:translateY(-3px);box-shadow:0 12px 40px rgba(184,150,90,.12)}
+    .card-preview{height:180px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .preview-dark{background:linear-gradient(135deg,#0a0a0f 0%,#14131a 50%,#0f0e0d 100%)}
+    .preview-dark::before{content:"";position:absolute;width:120px;height:120px;background:radial-gradient(circle,rgba(184,150,90,.25) 0%,transparent 70%);top:20px;right:30px;border-radius:50%}
+    .preview-dark-inner{position:relative;z-index:1;text-align:center;padding:1.5rem}
+    .preview-dark-inner .mini-headline{font-size:.85rem;font-weight:600;color:#e8e4dc;margin-bottom:.5rem}
+    .preview-dark-inner .mini-sub{font-size:.55rem;color:#7a766e;margin-bottom:.75rem}
+    .mini-btn{display:inline-block;padding:.3rem .8rem;border-radius:6px;font-size:.55rem;font-weight:600}
+    .mini-btn-gold{background:linear-gradient(135deg,#b8965a,#8a6e3e);color:#fff}
+    .mini-glass-cards{display:flex;gap:.4rem;margin-top:.7rem;justify-content:center}
+    .mini-glass-card{width:50px;height:28px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:6px}
+    .preview-warm{background:linear-gradient(135deg,#f7f3ee 0%,#ede8e0 100%)}
+    .preview-warm-inner{padding:1.5rem;text-align:center}
+    .preview-warm-inner .mini-headline{font-size:.8rem;font-weight:700;color:#1b2340;margin-bottom:.4rem}
+    .preview-warm-inner .mini-sub{font-size:.5rem;color:#5a5248;margin-bottom:.7rem}
+    .mini-bento{display:grid;grid-template-columns:1fr 1fr;gap:.3rem;margin-top:.5rem}
+    .mini-bento-cell{height:22px;border-radius:5px;background:rgba(27,35,64,.08)}
+    .mini-bento-cell:first-child{grid-column:span 2;height:16px}
+    .preview-bold{background:#fff}
+    .preview-bold-inner{padding:1.5rem;text-align:center}
+    .preview-bold-inner .mini-headline{font-size:.95rem;font-weight:800;color:#0f0e0d;margin-bottom:.3rem;line-height:1.1}
+    .preview-bold-inner .mini-sub{font-size:.5rem;color:#888;margin-bottom:.75rem}
+    .mini-stat-row{display:flex;gap:.5rem;justify-content:center;margin-top:.6rem}
+    .mini-stat{font-size:.55rem;font-weight:700;color:#b8965a;padding:.2rem .4rem;border:1px solid rgba(184,150,90,.3);border-radius:4px}
+    .card-body{padding:1.25rem 1.5rem 1.5rem}
+    .card-style-tag{display:inline-block;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:rgba(184,150,90,.1);padding:.2rem .6rem;border-radius:999px;margin-bottom:.75rem}
+    .card-title{font-size:1.05rem;font-weight:600;color:#e8e4dc;margin-bottom:.4rem}
+    .card-desc{font-size:.82rem;color:var(--text-muted);line-height:1.5;margin-bottom:1.25rem}
+    .card-footer{display:flex;align-items:center;justify-content:space-between}
+    .card-number{font-size:.65rem;color:var(--border);letter-spacing:.1em}
+    .preview-btn{display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;font-weight:600;color:var(--gold);letter-spacing:.05em;text-transform:uppercase;transition:gap .2s}
+    .card:hover .preview-btn{gap:.65rem}
+    .preview-btn svg{width:14px;height:14px}
+    footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-size:.72rem;color:var(--text-muted);letter-spacing:.08em}
+    @media(max-width:640px){header{padding:1.5rem}.grid-section{padding:1.5rem 1.25rem 4rem}.cards-grid{grid-template-columns:1fr}.hero{padding:3rem 1.5rem 2rem}}
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="logo">
+      <div class="logo-icon">✦</div>
+      <div class="logo-text"><span>AI Ministry Platform</span><span>Your Co-Pastor</span></div>
+    </a>
+    <span class="header-badge">Internal · Design Review</span>
+  </header>
+  <section class="hero">
+    <div class="hero-tag">✦ Design Directory</div>
+    <h1>Landing Page <strong>Options</strong></h1>
+    <p>Browse and preview design directions for the Your Co-Pastor marketing page. Click any option to see the full experience.</p>
+  </section>
+  <section class="grid-section">
+    <div class="grid-label">3 Design Directions — Select to Preview</div>
+    <div class="cards-grid">
+      <a href="page-1-sermon-scribe.html" target="_blank" class="card">
+        <div class="card-preview preview-dark">
+          <div class="preview-dark-inner">
+            <div class="mini-headline">Your Ministry,<br>Fully Supported by AI</div>
+            <div class="mini-sub">Trusted by 500+ churches</div>
+            <span class="mini-btn mini-btn-gold">Start Your Free Trial</span>
+            <div class="mini-glass-cards"><div class="mini-glass-card"></div><div class="mini-glass-card"></div><div class="mini-glass-card"></div></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="card-style-tag">Dark Premium</span>
+          <div class="card-title">The Sermon Scribe</div>
+          <div class="card-desc">Deep dark background with gold accents and glassmorphism cards. Tech-forward but warm — premium ministry platform feel.</div>
+          <div class="card-footer"><span class="card-number">01 / 03</span><span class="preview-btn">Preview <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+        </div>
+      </a>
+      <a href="page-2-ministry-companion.html" target="_blank" class="card">
+        <div class="card-preview preview-warm">
+          <div class="preview-warm-inner">
+            <div class="mini-headline">Finally, a Co-Pastor<br>Who Never Burns Out</div>
+            <div class="mini-sub">For pastors who lead more than one person can handle</div>
+            <span class="mini-btn" style="border:1px solid #b8965a;color:#b8965a;font-size:.5rem">Get Your Co-Pastor Free</span>
+            <div class="mini-bento"><div class="mini-bento-cell"></div><div class="mini-bento-cell" style="background:rgba(184,150,90,.15)"></div><div class="mini-bento-cell"></div></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="card-style-tag">Warm Editorial</span>
+          <div class="card-title">The Ministry Companion</div>
+          <div class="card-desc">Warm cream and navy palette with a bento grid layout. Faith-inspired, story-driven — feels like a trusted partner, not a product.</div>
+          <div class="card-footer"><span class="card-number">02 / 03</span><span class="preview-btn">Preview <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+        </div>
+      </a>
+      <a href="page-3-bold-outcome.html" target="_blank" class="card">
+        <div class="card-preview preview-bold">
+          <div class="preview-bold-inner">
+            <div class="mini-headline">Save 10 Hours<br>a Week</div>
+            <div class="mini-sub">The average pastor spends 23 hrs/week on non-preaching work</div>
+            <span class="mini-btn mini-btn-gold" style="font-size:.5rem">See How It Works</span>
+            <div class="mini-stat-row"><span class="mini-stat">500+ Churches</span><span class="mini-stat">10 Hrs Saved</span><span class="mini-stat">4.9 ★</span></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="card-style-tag">Bold Outcome</span>
+          <div class="card-title">The Results Page</div>
+          <div class="card-desc">Clean white with bold black typography and gold CTAs. Outcome-first messaging — maximum clarity, maximum conversion.</div>
+          <div class="card-footer"><span class="card-number">03 / 03</span><span class="preview-btn">Preview <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+        </div>
+      </a>
+    </div>
+  </section>
+  <footer>Internal use only · Your Co-Pastor Team · Design Review v1</footer>
+</body>
+</html>
